@@ -162,6 +162,7 @@ public class Coach{
     /**
      * @return String this method puts all of the variables in a single string with spaces
      *         and no new lines.
+     * TODO add commas to the toString method
      */
     public String toString(){
         return this.id + " " +this.season +" "+ this.firstName +" "+ this.lastName + " " + 

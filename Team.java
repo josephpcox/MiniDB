@@ -67,4 +67,8 @@ public class Team{
     public char getLeague(){
         return this.league;
     }
+
+    /**
+     * TODO create a to string method
+     */
 }
