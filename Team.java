@@ -31,7 +31,9 @@ public class Team{
             this.name = scan.nextLine();
 
             System.out.println("Enter League");
-            this.league = scan.nextLine();
+            
+            // this reads in the next character of the scan next line
+            this.league = scan.nextLine().charAt(0);
             valid = true;
             System.out.print("Team was sucessfully added");
         }

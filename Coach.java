@@ -26,8 +26,8 @@ public class Coach{
 
             // id
             System.out.println("Enter ID: ");
-            stringtemp = scan.nextLine();
-            if(stringtemp.length()>=7){
+            stringTemp = scan.nextLine();
+            if(stringTemp.length()>=7){
                 System.out.print("ERROR: ID MUST BE LESS THAN SIX CHARACTERS LONG, TRY AGAIN.");
                 continue;
             }
@@ -35,12 +35,12 @@ public class Coach{
             
             // year of the season
             System.out.println("Enter the four digit year of the season: ");
-            stringtemp = scan.nextLine();
+            stringTemp = scan.nextLine();
             if(stringTemp.length()>4){
                 System.out.println("ERROR: THE SEASON MUST A FOUR DIGIT YEAR, TRY AGAIN. ");
                 continue;
             }
-            this.season = Integer.valueOf(stringTemp);
+            this.season = Short.valueOf(stringTemp);
             
             // coaches first name
             System.out.println("Enter the first name of the coach: ");
@@ -57,43 +57,41 @@ public class Coach{
             // number of regular seasons wins for the coach 
             System.out.println("Enter the number of regular season wins for this coach: ");
             stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
+            if(Short.valueOf(stringTemp)<0){
                 System.out.println("ERROR: THE NUMBER OF WINS FOR A COACH CANNOT BE NEGATIVE");
                 continue;
             }
-            this.seasonWin = Integer.valueOf(stringTemp);
+            this.seasonWin = Short.valueOf(stringTemp);
 
             // number of regular season losses for the coach
             System.out.println("Enter the number of regular season losses for this coach: ");
             stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
+            if(Short.valueOf(stringTemp)<0){
                 System.out.println("ERROR: THE NUMBER OF LOSSES FOR A COACH CANNOT BE NEGATIVE");
                 continue;
             }
-            this.seasonLoss = Integer.valueOf(stringTemp);
+            this.seasonLoss = Short.valueOf(stringTemp);
 
             // number of playoff wins for the coach 
             System.out.println("Enter the number of playoff wins for this coach: ");
             stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
+            if(Short.valueOf(stringTemp)<0){
                 System.out.println("ERROR: THE NUMBER OF PLAYOFF WINS FOR A COACH CANNOT BE NEGATIVE");
                 continue;
             }
-            this.playoffWin = Integer.valueOf(stringTemp);
+            this.playoffWin = Short.valueOf(stringTemp);
 
             // playoff losses for the coach
             System.out.println("Enter the number of playoff losses for this coach: ");
             stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
+            if(Short.valueOf(stringTemp)<0){
                 System.out.println("ERROR: THE NUMBER OF PLAYOFF LOSSES FOR A COACH CANNOT BE NEGATIVE");
                 continue;
             }
-            this.playoffLoss = Integer.valueOf(stringTemp);
-
+            this.playoffLoss = Short.valueOf(stringTemp);
+            valid = true;
             
         }
-
-
     }
 
     /**
@@ -165,8 +163,8 @@ public class Coach{
      * TODO add commas to the toString method
      */
     public String toString(){
-        return this.id + " " +this.season +" "+ this.firstName +" "+ this.lastName + " " + 
-               this.teamName + " " + this.seasonWin + " "+ this.seasonLoss + " " + this.playoffWin +
+        return this.id + "," +this.season +","+ this.firstName +","+ this.lastName + "," + 
+               this.teamName + "," + this.seasonWin + ","+ this.seasonLoss + "," + this.playoffWin +
                this.playoffLoss;  
     }
 
