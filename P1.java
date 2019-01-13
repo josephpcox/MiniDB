@@ -1,8 +1,8 @@
 
 public class P1 {
 	
-	/* Define data structures for holding the data here */
-
+    /* Define data structures for holding the data here */
+    
     public P1() {
         /* initialize the data structures */
     }
@@ -24,37 +24,50 @@ public class P1 {
             if (cmd.getCommand().equals("help")) {
                 result = doHelp();
 
-		/* You need to implement all the following commands */
-            } else if (cmd.getCommand().equals("add_coach")) {
+		    /* You need to implement all the following commands */
+            } 
+            else if (cmd.getCommand().equals("add_coach")) {
             
-	    } else if (cmd.getCommand().equals("add_team")) {
+            } 
+            else if (cmd.getCommand().equals("add_team")) {
         	
-		} else if (cmd.getCommand().equals("print_coaches")) {
+            } 
+            else if (cmd.getCommand().equals("print_coaches")) {
 
-	   	} else if (cmd.getCommand().equals("print_teams")) {
+            } 
+            else if (cmd.getCommand().equals("print_teams")) {
 
-		} else if (cmd.getCommand().equals("coaches_by_name")) {
+            } 
+            else if (cmd.getCommand().equals("coaches_by_name")) {
 
-		} else if (cmd.getCommand().equals("teams_by_city")) {
+            } 
+            else if (cmd.getCommand().equals("teams_by_city")) {
 
-		} else if (cmd.getCommand().equals("load_coaches")) {
+            } 
+            else if (cmd.getCommand().equals("load_coaches")) {
 
-        } else if (cmd.getCommand().equals("load_teams")) {
+            } 
+            else if (cmd.getCommand().equals("load_teams")) {
 		
-		} else if (cmd.getCommand().equals("best_coach")) {
+            } 
+            else if (cmd.getCommand().equals("best_coach")) {
 
-		} else if (cmd.getCommand().equals("search_coaches")) {
+            } 
+            else if (cmd.getCommand().equals("search_coaches")) {
 
-		} else if (cmd.getCommand().equals("exit")) {
-			System.out.println("Leaving the database, goodbye!");
-			break;
-		} else if (cmd.getCommand().equals("")) {
-		} else {
-			System.out.println("Invalid Command, try again!");
+            } 
+            else if (cmd.getCommand().equals("exit")) {
+			    System.out.println("Leaving the database, goodbye!");
+			    break;
+            } 
+            else if (cmd.getCommand().equals("")) {
+            } 
+            else {
+			    System.out.println("Invalid Command, try again!");
            	} 
             
-	    if (result) {
-                // ...
+	        if (result) {
+                    // ...
             }
 
             System.out.print("> "); 
