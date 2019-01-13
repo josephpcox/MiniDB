@@ -69,8 +69,11 @@ public class Team{
     public char getLeague(){
         return this.league;
     }
-
     /**
-     * TODO create a to string method
+     * @return String this returns the string of all the instance variables seperated by
+     *         a comma.
      */
+    public String toString(){
+        return this.id + "," + this.location + "," + this.name + "," + this.league;
+    }
 }
