@@ -20,7 +20,7 @@ public class CommandParser {
 			return new Command(pieces[0], params);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return null;

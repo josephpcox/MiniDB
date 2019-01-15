@@ -7,14 +7,16 @@ public class Team{
     private char league;
 
     /**
+     * @param void
+     * @return void
      * This is the empty constructor, it validates the id to have less then 7 characters 
      * and it sets all of the class instance vaiables.
      */
     public Team(){
         String temp;
-        Scanner scan = new Scanner(System.in);
         boolean valid = false;
         while(valid == false){
+            Scanner scan = new Scanner(System.in);
             // validate to the specs given in the assignemnt.
             System.out.println("Enter ID:");
             temp = scan.nextLine();
@@ -40,14 +42,14 @@ public class Team{
 
     }
     /**
-     * 
+     * @param void
      * @return String id returns the coaches ID.
      */
     public String getID(){
         return this.id;
     }
     /**
-     * 
+     * @param void
      * @return String location this returns the location of the team.
      */
     public String getLocation(){
@@ -55,7 +57,7 @@ public class Team{
     }
 
     /**
-     * 
+     * @param void
      * @return String name this returns the team's name.
      */
     public String getName(){
@@ -63,13 +65,14 @@ public class Team{
 }
 
     /**
-     * 
+     * @param void
      * @return char this returns the character representing the league.
      */
     public char getLeague(){
         return this.league;
     }
     /**
+     * @param void
      * @return String this returns the string of all the instance variables seperated by
      *         a comma.
      */

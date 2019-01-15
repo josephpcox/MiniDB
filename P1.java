@@ -1,21 +1,86 @@
+import java.util.*;
+import java.io.*;
 
 public class P1 {
 	
     /* Define data structures for holding the data here */
+    Vector<Coach> coachList;
+    Vector<Team> teamList;
     
     public P1() {
-        /* initialize the data structures */
+    }
+  
+    /**
+     * 
+     * @param i int index you want to find the left child for
+     * @return integer that represents the index of the left child 
+     */
+    public int getLeftChild(int i){
+        return (2 * i +1);
+    }
+    /**
+     * 
+     * @param i int index you want to find the right child for
+     * @return integer that represents the index of the right child 
+     */
+    public int getRightChild(int i){
+        return (2 * i + 2);
+    }
+    /**
+     * 
+     * @param coach x
+     * @param coach y 
+     * Swap the contents of the two coaches 
+     */
+    public void swapChildren(Coach x, Coach y){
+        Coach temp = new Coach();
+        temp.deepCopy(x);
+        x.deepCopy(y);
+        y.deepCopy(x);
+
+    }
+    /**
+     * 
+     * @param pos position idex
+     * @return boolean, returns true is the given index is a leaf
+     */
+    public boolean isLeaf(int pos){
+        int size = coachList.size();
+        if(pos >=(size/2)&& pos <= size) return true;
+        return false;
+    }
+
+    public void maxHeapify(int pos){
+        if(this.isLeaf(pos)) return;
+
+        if(coachList.get(pos).getNetWins()< coachList.get(this.getLeftChild(pos)).getNetWins()
+        || coachList.get(pos).getNetWins()< coachList.get(this.getRightChild(pos)).getNetWins()){
+
+            if(coachList.get(this.getLeftChild(pos)).getNetWins()>coachList.get(this.getRightChild(pos)).getNetWins()){
+                this.swapChildren(coachList.get(pos), coachList.get(this.getLeftChild(pos)));
+                this.maxHeapify(this.getLeftChild(pos));
+            }
+            else{
+                this.swapChildren(coachList.get(pos),coachList.get(this.getRightChild(pos)));
+            }
+        }
+        
     }
     
     public void run() {
         CommandParser parser = new CommandParser();
-
+        this.coachList = new Vector<>();
+        this.teamList = new Vector<>();
         System.out.println("The mini-DB of NBA coaches and teams");
         System.out.println("Please enter a command.  Enter 'help' for a list of commands.");
         System.out.println();
         System.out.print("> "); 
-        
+        Scanner scan = new Scanner(System.in);
         Command cmd = null;
+        String name = " ";
+        int index = 0;
+        int i = 0; // counter for the loops 
+
         while ((cmd = parser.fetchCommand()) != null) {
             //System.out.println(cmd);
             
@@ -27,46 +92,82 @@ public class P1 {
 		    /* You need to implement all the following commands */
             } 
             else if (cmd.getCommand().equals("add_coach")) {
+                Coach newCoach = new Coach("To add a new coach to the vecor");
+                this.coachList.add(newCoach);
+                this.maxHeapify(0); // maxheapify starting at the root;
                 
             } 
             else if (cmd.getCommand().equals("add_team")) {
+                Team newTeam = new Team();
+                this.teamList.add(newTeam);
         	
             } 
             else if (cmd.getCommand().equals("print_coaches")) {
-
+                for(i = 0; i<this.coachList.size();i++){
+                    System.out.println(this.coachList.get(i).toString());
+                }
             } 
             else if (cmd.getCommand().equals("print_teams")) {
+                for(i = 0; i<teamList.size();i++){
+                    System.out.println(this.teamList.get(i).toString());
+                }
 
             } 
             else if (cmd.getCommand().equals("coaches_by_name")) {
+                name = scan.next();
+                index = name.indexOf('+');
+                if(index!=-1){
+                    name = name.replace('+', ' ');
+                }
+                else{
+                    for(i = 0; i<this.coachList.size();i++){
+                        if(name.equals(this.coachList.get(i).getLastName())){
+                            System.out.println(this.coachList.get(i).toString());
+                        }
+                    }
+
+                }
 
             } 
-            else if (cmd.getCommand().equals("teams_by_city")) {
+            else if (cmd.getCommand().equals("teams_by_city")){
+                name = scan.next();
+                index = name.indexOf('+');
+                if(index != -1){
+                    name = name.replace('+', ' ');
+                }
+                else{
+                    for(i = 0; i<this.teamList.size();i++){
+                        if(name.equals(this.teamList.get(i).getName())){
+                            System.out.println(this.teamList.get(i).getName());
+                        }
+                    }
+
+                }
+            } 
+            else if (cmd.getCommand().equals("load_coaches")){
 
             } 
-            else if (cmd.getCommand().equals("load_coaches")) {
-
-            } 
-            else if (cmd.getCommand().equals("load_teams")) {
+            else if (cmd.getCommand().equals("load_teams")){
 		
             } 
-            else if (cmd.getCommand().equals("best_coach")) {
+            else if (cmd.getCommand().equals("best_coach")){
+                 System.out.println(this.coachList.get(0).toString()); // best coach should be at the root of the vector 
+                                                                      // due to maxheapify being called after every entry
+            } 
+            else if (cmd.getCommand().equals("search_coaches")){
 
             } 
-            else if (cmd.getCommand().equals("search_coaches")) {
-
-            } 
-            else if (cmd.getCommand().equals("exit")) {
+            else if (cmd.getCommand().equals("exit")){
 			    System.out.println("Leaving the database, goodbye!");
 			    break;
             } 
-            else if (cmd.getCommand().equals("")) {
+            else if (cmd.getCommand().equals("")){
             } 
             else {
 			    System.out.println("Invalid Command, try again!");
            	} 
             
-	        if (result) {
+	        if (result){
                     // ...
             }
 
