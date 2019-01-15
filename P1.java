@@ -27,7 +27,7 @@ public class P1 {
 		    /* You need to implement all the following commands */
             } 
             else if (cmd.getCommand().equals("add_coach")) {
-            
+                
             } 
             else if (cmd.getCommand().equals("add_team")) {
         	
@@ -76,7 +76,7 @@ public class P1 {
     
     private boolean doHelp() {
         System.out.println("add_coach ID SEASON FIRST_NAME LAST_NAME SEASON_WIN "); 
-	System.out.println("          EASON_LOSS PLAYOFF_WIN PLAYOFF_LOSS TEAM - add new coach data");
+	    System.out.println("SEASON_LOSS PLAYOFF_WIN PLAYOFF_LOSS TEAM - add new coach data");
         System.out.println("add_team ID LOCATION NAME LEAGUE - add a new team");
         System.out.println("print_coaches - print a listing of all coaches");
         System.out.println("print_teams - print a listing of all teams");

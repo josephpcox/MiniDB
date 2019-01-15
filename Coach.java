@@ -4,6 +4,7 @@
  * 
  */
 import java.util.Scanner;
+
 public class Coach{
     private String id;
     private short season;
@@ -15,7 +16,12 @@ public class Coach{
     private short playoffWin;
     private short playoffLoss;
 
-
+    /**
+     * @param nil 
+     * @return nil
+     * This is a defalut constructor that will automaticly create a new coach 
+     * Following System promps.
+     */
     public Coach(){
         Scanner scan = new Scanner(System.in);
         String stringTemp;
