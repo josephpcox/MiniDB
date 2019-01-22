@@ -1,211 +1,118 @@
-
 /**
- * @author Joseph Cox
- * 
+ * @author joseph cox U00594912
  */
-import java.util.Scanner;
-
-public class Coach{
-    private String id;
-    private int season;
-    private String firstName;
-    private String lastName;
-    private String teamName;
-    private int seasonWin;
-    private int seasonLoss;
-    private int playoffWin;
-    private int playoffLoss;
+public class Coach {
+    // instance vars
+    private String id, season, first_name, last_name, season_win, season_loss, playoff_win, playoff_loss, team;
     private int netWins;
 
     /**
-     * @param String this is to make it not a defalut constructor
-     * @return void
-     * This is a defalut constructor that will automaticly create a new coach 
-     * Following System promps.
+     * @param String id
+     * @param String season
+     * @param String first_name
+     * @param String last_name
+     * @param String season_win
+     * @param String season_loss
+     * @param String playoff_win
+     * @param String playoff_loss
+     * @param String team
+     * @return Object-Default Constructor Takes 9 argumets total to construct object
      */
-    public Coach(String purpose){
-        Scanner scan = new Scanner(System.in);
-        String stringTemp;
-        boolean valid = false;
+    public Coach(String id, String season, String first_name, String last_name, String season_win,
+                 String season_loss, String playoff_win, String playoff_loss, String team) {
+        this.id = id;                                 //1 9 arguments total + 1 calculated variable
+        this.season = season;                         //2
+        this.first_name = first_name;                 //3
+        this.last_name = last_name;                   //4
+        this.season_win = season_win;                 //5
+        this.season_loss = season_loss;               //6
+        this.playoff_win = playoff_win;               //7
+        this.playoff_loss = playoff_loss;             //8
+        this.team = team;                             //9
 
-        // data validation 
-        while(valid == false){
-
-            // id
-            System.out.println("Enter ID: ");
-            stringTemp = scan.nextLine();
-            if(stringTemp.length()>=7){
-                System.out.print("ERROR: ID MUST BE LESS THAN SIX CHARACTERS LONG, TRY AGAIN.");
-                continue;
-            }
-            this.id = stringTemp;
-            
-            // year of the season
-            System.out.println("Enter the four digit year of the season: ");
-            stringTemp = scan.nextLine();
-            if(stringTemp.length()>4){
-                System.out.println("ERROR: THE SEASON MUST A FOUR DIGIT YEAR, TRY AGAIN. ");
-                continue;
-            }
-            this.season = Short.valueOf(stringTemp);
-            
-            // coaches first name
-            System.out.println("Enter the first name of the coach: ");
-            this.firstName = scan.nextLine();
-
-            // coaches last name 
-            System.out.println("Enter the last name of the coach: ");
-            this.lastName = scan.nextLine();
-
-            // team of the coach
-            System.out.println("Enter the name of the team: ");
-            this.teamName = scan.nextLine();
-
-            // number of regular seasons wins for the coach 
-            System.out.println("Enter the number of regular season wins for this coach: ");
-            stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
-                System.out.println("ERROR: THE NUMBER OF WINS FOR A COACH CANNOT BE NEGATIVE");
-                continue;
-            }
-            this.seasonWin = Short.valueOf(stringTemp);
-
-            // number of regular season losses for the coach
-            System.out.println("Enter the number of regular season losses for this coach: ");
-            stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
-                System.out.println("ERROR: THE NUMBER OF LOSSES FOR A COACH CANNOT BE NEGATIVE");
-                continue;
-            }
-            this.seasonLoss = Short.valueOf(stringTemp);
-
-            // number of playoff wins for the coach 
-            System.out.println("Enter the number of playoff wins for this coach: ");
-            stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
-                System.out.println("ERROR: THE NUMBER OF PLAYOFF WINS FOR A COACH CANNOT BE NEGATIVE");
-                continue;
-            }
-            this.playoffWin = Integer.valueOf(stringTemp);
-
-            // playoff losses for the coach
-            System.out.println("Enter the number of playoff losses for this coach: ");
-            stringTemp = scan.nextLine();
-            if(Integer.valueOf(stringTemp)<0){
-                System.out.println("ERROR: THE NUMBER OF PLAYOFF LOSSES FOR A COACH CANNOT BE NEGATIVE");
-                continue;
-            }
-            this.playoffLoss = Short.valueOf(stringTemp);
-            this.netWins = (this.seasonWin+this.playoffWin) - (this.seasonLoss + this.playoffLoss);
-            valid = true;
-            
-        }
-    }
-    /**
-     * @param void
-     * @return void
-     * Default Constructor 
-     */
-    public Coach(){    
+        this.netWins = (Integer.parseInt(this.season_win) - Integer.parseInt(this.season_loss)) + (Integer.parseInt(this.playoff_win) - Integer.parseInt(this.playoff_loss));
     }
 
     /**
      * @param void
-     * @return String id this returns the id of the coach.
+     * @return String id
      */
-    public String getID(){
+    public String get_id() {
         return this.id;
     }
+
     /**
      * @param void
-     * @return short season this returns the 4 digit year of the season.
+     * @return String season
      */
-    public int getSeason(){
+    public String get_season() {
         return this.season;
     }
+
     /**
      * @param void
-     * @return String firstName this returns the first name of the coach.
+     * @return String first_name
      */
-    public String getFirstName(){
-        return this.firstName;
-    }
-    /**
-     * @param void
-     * @return String lastName this returns the last name of the coach.
-     */
-    public String getLastName(){
-        return this.lastName;
-    }
-    /**
-     * @param void
-     * @return String teamName this returns the name of the team of the coach. 
-     */
-    public String getTeamName(){
-        return this.teamName;
-    }
-    /**
-     * @param void
-     * @return short seasonWin this returns the total wins for the coach.
-     */
-    public int getSeasonWin(){
-        return this.seasonWin;
-    }
-    /**
-     * @param void
-     * @return short seasonLoss this returns the total losses for the coach. 
-     * 
-     */
-    public int getSeasonLoss(){
-        return this.seasonLoss;
-    }
-    /**
-     * @param void
-     * @return short playoffWin this returns the total number of playoff wins for the coach.
-     */
-    public int getPlayoffWin(){
-        return this.playoffWin;
-    }
-    /**
-     * 
-     * @return short playoffLoss this returns the total number of playoff loss for the coach.
-     */
-    public int getPlayoffLoss(){
-        return this.playoffLoss;
-    }
-    /**
-     * @param void 
-     * @return shor the amount of net wins a coach has (season wins + playoff wins) - (season loss + playoff loss) 
-     */
-    public int getNetWins(){
-        return this.netWins;
-    }
-    /**
-     * @return String this method puts all of the variables in a single string with spaces
-     *         and no new lines.
-     * 
-     */
-    public String toString(){
-        return this.id + "," +this.season +","+ this.firstName +","+ this.lastName + "," + 
-               this.teamName + "," + this.seasonWin + ","+ this.seasonLoss + "," + this.playoffWin +
-               this.playoffLoss;  
-    }
-    /**
-     * 
-     * @param toCopy This is the coach object that a deep copy is to be made from
-     * @return void
-     */
-    public void deepCopy(Coach toCopy){
-        this.id = toCopy.getID();
-        this.season = toCopy.getSeason();
-        this.firstName = toCopy.getFirstName();
-        this.lastName = toCopy.getLastName();
-        this.teamName = toCopy.getTeamName();
-        this.seasonWin = toCopy.getSeasonWin();
-        this.seasonLoss = toCopy.getSeasonLoss();
-        this.playoffWin = toCopy.getPlayoffWin();
-        this.playoffLoss = toCopy.getPlayoffLoss();
-        
+    public String getFirst_name() {
+        return this.first_name;
     }
 
+    /**
+     * @param void
+     * @return String lastname
+     */
+    public String getLast_name() {
+        return this.last_name;
+    }
+
+    /**
+     * @return String season_win
+     */
+    public String getSeason_win() {
+        return this.season_win;
+    }
+
+    public String getPlayoff_win() {
+        return this.playoff_win;
+    }
+
+    /**
+     * @param void
+     * @return String seaon_loss
+     */
+    public String getSeason_loss() {
+        return this.season_loss;
+    }
+
+    /**
+     * @param void
+     * @return String playoff_loss
+     */
+    public String getPlayoff_loss() {
+        return this.getPlayoff_loss();
+    }
+
+    /**
+     * @param void
+     * @return String team
+     */
+    public String get_team() {
+        return this.team;
+    }
+
+    /**
+     * @param void
+     * @return int net wins
+     */
+    public int getNet_wins() {
+        return this.netWins;
+    }
+
+    /**
+     * @return String that contains all the instince variables
+     */
+    public String toString() {
+        return (id + "\t" + season + "\t" + first_name + "\t" + last_name + "\t" + season_win + "\t"
+                + season_loss + " \t" + playoff_win + " \t" + playoff_loss + "\t" + team);
+    }
 }
